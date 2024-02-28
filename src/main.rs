@@ -1,6 +1,6 @@
-use console_log::*;
+use fmt_log::*;
 
 fn main() {
-    console_log!("Hello, world!");
-    console_error!("Hello, world!");
+    fmt_printf!("Hello, world!");
+    fmt_errorf!("Hello, world!");
 }

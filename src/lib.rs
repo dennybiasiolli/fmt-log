@@ -1,4 +1,4 @@
-//! console_log
+//! fmt_log
 //!
 //! This module contains macros for logging to the console
 //! using the `std::println!` or `std::eprintln!` macros, but also returns the
@@ -10,17 +10,17 @@
 /// # Examples
 ///
 /// ```rust
-/// use console_log::console_log;
+/// use fmt_log::fmt_printf;
 ///
 /// let s1 = "Hello";
 /// let s2 = String::from("world!");
 /// let n1 = 123;
-/// let output = console_log!("{}, {} {}", s1, s2, n1);
+/// let output = fmt_printf!("{}, {} {}", s1, s2, n1);
 /// assert_eq!(output, format!("{}, {} {}", s1, s2, n1));
 /// ```
 /// This will log "Hello, world!" to the console.
 #[macro_export]
-macro_rules! console_log {
+macro_rules! fmt_printf {
     ($($arg:tt)*) => {
         {
             std::println!($($arg)*);
@@ -35,17 +35,17 @@ macro_rules! console_log {
 /// # Examples
 ///
 /// ```rust
-/// use console_log::console_log;
+/// use fmt_log::fmt_errorf;
 ///
 /// let s1 = "Hello";
 /// let s2 = String::from("world!");
 /// let n1 = 123;
-/// let output = console_log!("{}, {} {}", s1, s2, n1);
+/// let output = fmt_errorf!("{}, {} {}", s1, s2, n1);
 /// assert_eq!(output, format!("{}, {} {}", s1, s2, n1));
 /// ```
 /// This will log "Hello, world!" to the console.
 #[macro_export]
-macro_rules! console_error {
+macro_rules! fmt_errorf {
     ($($arg:tt)*) => {
         {
             std::eprintln!($($arg)*);
@@ -63,7 +63,7 @@ mod tests {
         let s1 = "Hello";
         let s2 = String::from("world!");
         let n1 = 123;
-        let output = console_log!("{}, {} {}", s1, s2, n1);
+        let output = fmt_printf!("{}, {} {}", s1, s2, n1);
         assert_eq!(output, format!("{}, {} {}", s1, s2, n1));
         // Hello, world! 123
     }
@@ -73,7 +73,7 @@ mod tests {
         let s1 = "Hello";
         let s2 = String::from("world!");
         let n1 = 123;
-        let output = console_error!("{}, {} {}", s1, s2, n1);
+        let output = fmt_errorf!("{}, {} {}", s1, s2, n1);
         assert_eq!(output, format!("{}, {} {}", s1, s2, n1));
         // Hello, world! 123
     }
