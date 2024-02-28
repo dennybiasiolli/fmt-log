@@ -1,6 +1,6 @@
 [package]
 name = "fmt-log"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Macros for logging to the console, but also returning the formatted string"
 license = "MIT"
